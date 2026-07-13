@@ -1,6 +1,7 @@
 
+
 import app from "./app";
-import config from "./config";
+import config from "./config/config.index";
 
 
 
@@ -10,7 +11,7 @@ const PORT = config.port;
 
 
 
-function main() {
+async function main() {
 
 
     try {
@@ -22,9 +23,9 @@ function main() {
     } catch (error) {
 
         console.log(`Start the server: `, error);
-
+        process.exit(1)
     }
-    
+
 };
 
 main()

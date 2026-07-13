@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./src",
     "module": "ESNext",
     "moduleResolution": "bundler",
     "target": "ES2023",
@@ -20,13 +19,7 @@
     "esModuleInterop": true,
     "ignoreDeprecations": "6.0"
   },
-  "include": [
-    "./src/**/*",
-    "prisma/**/*.ts",
-    "src/server.ts"
-  ],
+  // "include": ["./src/**/*","prisma/**/*.ts"],
   "exclude": [
-    "node_modules",
-    "dist"
-  ]
+    "node_modules","dist"]
 }
