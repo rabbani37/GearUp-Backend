@@ -4,7 +4,7 @@ model RentalOrder {
     customer   User     @relation(fields: [customerId], references: [id], onDelete: Cascade)
     gearItemId String
     gearItem   GearItem @relation(fields: [gearItemId], references: [id], onDelete: Cascade)
-    
+
     startDate  DateTime
     endDate    DateTime
     quantity   Int          @default(1)
@@ -12,6 +12,9 @@ model RentalOrder {
     status     RentalStatus
     createAt   DateTime     @default(now())
     updateAt   DateTime     @updatedAt
+
+    payments Payment[]
+    reviews  Review[]
 
     @@map("rentalOrders")
 }

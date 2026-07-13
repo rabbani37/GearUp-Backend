@@ -1,0 +1,14 @@
+model Payment {
+    id              String        @id @default(uuid())
+    rentalOrderId   String        @unique
+    rentalOrder     RentalOrder   @relation(fields: [rentalOrderId], references: [id])
+    amount          Decimal
+    method          String        @default("stripe")
+    stripeSessionId String?
+    transactionId   String?
+    status          PaymentStatus @default(PENDING)
+    paidAt          DateTime?
+    createdAt       DateTime      @default(now())
+
+    @@map("payments")
+}
