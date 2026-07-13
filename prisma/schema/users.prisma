@@ -1,10 +1,13 @@
 model User {
-    id       String     @id @default(uuid())
-    name     String     @db.VarChar(100)
-    email    String     @unique @db.VarChar(250)
-    role     UserRole
-    password String
-    status   UserStatus @default(ACTIVE)
+    id        String     @id @default(uuid())
+    name      String     @db.VarChar(100)
+    email     String     @unique @db.VarChar(250)
+    role      UserRole
+    password  String
+    status    UserStatus @default(ACTIVE)
+    createAt  DateTime   @default(now())
+    gearItems GearItem[]
+    
 
-    createAt DateTime @default(now())
+    @@map("users")
 }
