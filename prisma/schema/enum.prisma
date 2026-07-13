@@ -1,10 +1,19 @@
 enum UserRole {
-  CUSTOMER
-  PROVIDER
-  ADMIN
+    CUSTOMER
+    PROVIDER
+    ADMIN
 }
 
 enum UserStatus {
-  ACTIVE
-  SUSPENDED
+    ACTIVE
+    SUSPENDED
+}
+
+enum RentalStatus {
+    PLACED
+    CONFIRMED
+    CANCELLED
+    PAID
+    PICKED_UP
+    RETURNED
 }
