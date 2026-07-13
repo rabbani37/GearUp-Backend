@@ -1,20 +1,22 @@
 model RentalOrder {
-    id         String   @id @default(uuid())
+    id         String       @id @default(uuid())
     customerId String
-    customer   User     @relation(fields: [customerId], references: [id], onDelete: Cascade)
+    customer   User         @relation(fields: [customerId], references: [id], onDelete: Restrict)
     gearItemId String
-    gearItem   GearItem @relation(fields: [gearItemId], references: [id], onDelete: Cascade)
-
+    gearItem   GearItem     @relation(fields: [gearItemId], references: [id], onDelete: Restrict)
     startDate  DateTime
     endDate    DateTime
     quantity   Int          @default(1)
     totalPrice Decimal
-    status     RentalStatus
-    createAt   DateTime     @default(now())
-    updateAt   DateTime     @updatedAt
+    status     RentalStatus @default(PLACED)
+    createdAt  DateTime     @default(now())
+    updatedAt  DateTime     @updatedAt
 
-    payments Payment[]
-    reviews  Review[]
+    payment Payment?
+    review  Review?
 
+    @@index([customerId])
+    @@index([gearItemId])
+    @@index([status])
     @@map("rentalOrders")
 }

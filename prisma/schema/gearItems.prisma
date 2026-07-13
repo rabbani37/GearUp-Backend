@@ -4,15 +4,21 @@ model GearItem {
     description String
     brand       String
     pricePerDay Decimal
+    stock       Int        @default(0)
     images      String[]
     isAvailable Boolean    @default(true)
     categoryId  String
-    category    Categories @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+    category    Categories   @relation(fields: [categoryId], references: [id], onDelete: Restrict)
     providerId  String
-    provider    User       @relation(fields: [providerId], references: [id], onDelete: Cascade)
+    provider    User       @relation(fields: [providerId], references: [id], onDelete: Restrict)
+    createdAt   DateTime   @default(now())
+    updatedAt   DateTime   @updatedAt
 
     rentalOrders RentalOrder[]
     reviews      Review[]
 
+    @@index([categoryId])
+    @@index([providerId])
+    @@index([isAvailable])
     @@map("gearItems")
 }

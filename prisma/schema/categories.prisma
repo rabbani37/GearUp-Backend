@@ -4,4 +4,6 @@ model Categories {
     createAt DateTime @default(now())
 
     gearItems GearItem[]
+
+
 }
